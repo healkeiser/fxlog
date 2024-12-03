@@ -90,7 +90,7 @@ Then, you can use the `fxlog` module to create a logger object and log messages 
 from fxlog import fxlogger
 
 logger = fxlog.configure_logger('my_logger')
-logger.debug('This is a debug message.')
+logger.debug('This is a debug message')
 ```
 
 To delete old log files, you can use the `fxlog` module as follows:
@@ -120,7 +120,7 @@ If you don't want to save the log files, you can use the `fxlog` module as follo
 from fxlog import fxlogger
 
 logger = fxlog.configure_logger('my_logger', save_to_file=False)
-logger.debug('This is a debug message.')
+logger.debug('This is a debug message')
 ```
 
 ### Misc
@@ -137,7 +137,7 @@ You can enable a colored output by setting the `enable_color` parameter to `True
 from fxlog import fxlogger
 
 logger = fxlog.configure_logger('my_logger', enable_color=True)
-logger.debug('This is a debug message.')
+logger.debug('This is a debug message')
 ```
 
 <p align="center">
@@ -156,7 +156,7 @@ You can also enable a separator between log messages by setting the `enable_sepa
 from fxlog import fxlogger
 
 logger = fxlog.configure_logger('my_logger', enable_separator=True)
-logger.debug('This is a debug message.')
+logger.debug('This is a debug message')
 ```
 
 <p align="center">
