@@ -59,7 +59,7 @@ A custom logging module for Python that supports colorized output and log file r
 <!-- INSTALLATION -->
 ## Installation
 
-The package can be installed via pip:
+The package is available on [PyPI](https://pypi.org/project/fxlog) and can be installed via `pip`:
 
 ```shell
 python -m pip install fxlog
