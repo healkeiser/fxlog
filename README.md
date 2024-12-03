@@ -1,7 +1,7 @@
 <div align="center">
 
-  ![Logo](https://raw.githubusercontent.com/healkeiser/fxgui/main/fxgui/images/icons/fxlog_logo_background_dark.svg#gh-light-mode-only)
-  ![Logo](https://raw.githubusercontent.com/healkeiser/fxgui/main/fxgui/images/icons/fxlog_logo_background_light.svg#gh-dark-mode-only)
+  ![Logo](https://raw.githubusercontent.com/healkeiser/fxlog/main/fxlog/images/icons/fxlog_logo_background_dark.svg#gh-light-mode-only)
+  ![Logo](https://raw.githubusercontent.com/healkeiser/fxlog/main/fxlog/images/icons/fxlog_logo_background_light.svg#gh-dark-mode-only)
 
   <h3 align="center">fxlog</h3>
 
