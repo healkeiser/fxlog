@@ -14,16 +14,18 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 # Required dependencies
-install_requires = []
+install_requires = ["colorama"]
 
 setup(
-    name="python_package",
+    name="fxlog",
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    description="Template for Python packages.",
-    url="https://github.com/healkeiser/python_package",
+    description="A custom logging module for Python that supports colorized "
+    "output and log file rotation. Includes features such as configurable "
+    "log levels, custom formatters, and automatic deletion of old log files.",
+    url="https://github.com/healkeiser/fxlog",
     author="Valentin Beaumont",
     author_email="valentin.onze@gmail.com",
     license="MIT",
@@ -32,10 +34,10 @@ setup(
     install_requires=install_requires,
     include_package_data=True,
     project_urls={
-        "Documentation": "https://healkeiser.github.io/python_package",
-        "GitHub": "https://github.com/healkeiser/python_package",
-        "Changelog": "https://github.com/healkeiser/python_package/blob/main/CHANGELOG.md",
-        "Source": "https://github.com/healkeiser/python_package",
+        "Documentation": "https://healkeiser.github.io/fxlog",
+        "GitHub": "https://github.com/healkeiser/fxlog",
+        "Changelog": "https://github.com/healkeiser/fxlog/blob/main/CHANGELOG.md",
+        "Source": "https://github.com/healkeiser/fxlog",
         "Funding": "https://github.com/sponsors/healkeiser",
     },
 )
