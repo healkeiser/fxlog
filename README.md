@@ -79,7 +79,7 @@ If you want to save the log files <sup>[1](#footnote1)</sup>, import the `fxlog`
 ```python
 from fxlog import fxlogger
 
-fxlog.set_log_directory('path/to/log/directory')
+fxlogger.set_log_directory('path/to/log/directory')
 ```
 
 > [!NOTE]
@@ -90,7 +90,7 @@ Then, you can use the `fxlog` module to create a logger object and log messages 
 ```python
 from fxlog import fxlogger
 
-logger = fxlog.configure_logger('my_logger')
+logger = fxlogger.configure_logger('my_logger')
 logger.debug('This is a debug message')
 ```
 
@@ -99,7 +99,7 @@ To delete old log files, you can use the `fxlog` module as follows:
 ```python
 from fxlog import fxlogger
 
-fxlog.delete_old_logs(7) # Delete log files older than 7 days
+fxlogger.delete_old_logs(7) # Delete log files older than 7 days
 ```
 
 You can also clear all log files in the log directory:
@@ -107,7 +107,7 @@ You can also clear all log files in the log directory:
 ```python
 from fxlog import fxlogger
 
-fxlog.clear_logs()
+fxlogger.clear_logs()
 ```
 
 > [!NOTE]
@@ -120,18 +120,18 @@ If you don't want to save the log files, you can use the `fxlog` module as follo
 ```python
 from fxlog import fxlogger
 
-logger = fxlog.configure_logger('my_logger', save_to_file=False)
+logger = fxlogger.configure_logger('my_logger', save_to_file=False)
 logger.debug('This is a debug message')
 ```
 
 ### Set Log Level
 
-You can set the log level of all loggers by using the `set_loggers_level` function:
+You can set the log level of **all** loggers by using the `set_loggers_level` function:
 
 ```python
 from fxlog import fxlogger
 
-fxlog.set_loggers_level(fxlogger.DEBUG) # You can also use `logging.DEBUG`
+fxlogger.set_loggers_level(fxlogger.DEBUG) # You can also use `logging.DEBUG`
 ```
 
 ### Set Formatter
@@ -147,7 +147,7 @@ You can enable a colored output by setting the `enable_color` parameter to `True
 ```python
 from fxlog import fxlogger
 
-logger = fxlog.configure_logger('my_logger', enable_color=True)
+logger = fxlogger.configure_logger('my_logger', enable_color=True)
 logger.debug('This is a debug message')
 ```
 
@@ -166,7 +166,7 @@ You can also enable a separator between log messages by setting the `enable_sepa
 ```python
 from fxlog import fxlogger
 
-logger = fxlog.configure_logger('my_logger', enable_separator=True)
+logger = fxlogger.configure_logger('my_logger', enable_separator=True)
 logger.debug('This is a debug message')
 ```
 
