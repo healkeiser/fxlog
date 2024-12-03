@@ -43,7 +43,8 @@
 - [How-to Use](#how-to-use)
   - [Save Log Files](#save-log-files)
   - [Do Not Save Log Files](#do-not-save-log-files)
-  - [Misc](#misc)
+  - [Set Log Level](#set-log-level)
+  - [Set Formatter](#set-formatter)
 - [Contact](#contact)
 
 
@@ -61,7 +62,7 @@ A custom logging module for Python that supports colorized output and log file r
 The package can be installed via pip:
 
 ```bash
-pip install fxlog
+python -m pip install fxlog
 ```
 
 
@@ -123,7 +124,7 @@ logger = fxlog.configure_logger('my_logger', save_to_file=False)
 logger.debug('This is a debug message')
 ```
 
-### Misc
+### Set Log Level
 
 You can set the log level of all loggers by using the `set_loggers_level` function:
 
@@ -132,6 +133,8 @@ from fxlog import fxlogger
 
 fxlog.set_loggers_level(fxlogger.DEBUG) # You can also use `logging.DEBUG`
 ```
+
+### Set Formatter
 
 By default, the output looks like this:
 
