@@ -82,6 +82,26 @@ from fxlog import fxlogger
 fxlogger.set_log_directory('path/to/log/directory')
 ```
 
+E.g.,
+
+```python
+import os
+from pathlib import Path
+from fxlog import fxlogger
+
+
+_PACKAGE_NAME = "package_name"
+DATA_DIR = (
+    Path(os.getenv("APPDATA")) / _PACKAGE_NAME
+    if os.name == "nt"
+    else Path.home() / _PACKAGE_NAME
+)
+LOG_DIR = DATA_DIR / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+fxlogger.set_log_directory(LOG_DIR)
+```
+
 > [!NOTE]
 > This only needs to be done once in your package.
 
