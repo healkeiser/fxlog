@@ -110,7 +110,7 @@ fxlog.clear_logs()
 ```
 
 > [!NOTE]
-> > <sup id="footnote1">1</sup> The log files are constructed with the following naming convention: `<logger_name>_<year>-<month>-<day>.log`.
+> <sup id="footnote1">1</sup> The log files are constructed with the following naming convention: `<logger_name>_<year>-<month>-<day>.log`.
 
 ### Do Not Save Log Files
 
