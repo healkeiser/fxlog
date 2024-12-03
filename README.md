@@ -94,7 +94,7 @@ _PACKAGE_NAME = "package_name"
 DATA_DIR = (
     Path(os.getenv("APPDATA")) / _PACKAGE_NAME
     if os.name == "nt"
-    else Path.home() / _PACKAGE_NAME
+    else Path.home() / f".{_PACKAGE_NAME}"
 )
 LOG_DIR = DATA_DIR / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
