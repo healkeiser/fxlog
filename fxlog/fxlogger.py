@@ -41,6 +41,19 @@ def set_log_directory(log_directory: Union[str, Path]) -> None:
     _LOG_DIRECTORY = Path(log_directory)
 
 
+def _check_log_directory() -> None:
+    """Check if the log directory is set and exists."""
+
+    global _LOG_DIRECTORY
+    if _LOG_DIRECTORY is None:
+        raise ValueError(
+            "Log directory is not set. Call `set_log_directory` first."
+        )
+
+    if not _LOG_DIRECTORY.is_dir():
+        raise ValueError("Log directory does not exist.")
+
+
 def _supports_color() -> bool:
     """Check if the terminal supports color."""
 
@@ -173,11 +186,8 @@ def configure_logger(
         logging.Logger: The custom logger.
     """
 
-    global _LOG_DIRECTORY
-    if save_to_file and _LOG_DIRECTORY is None:
-        raise ValueError(
-            "Log directory is not set. Call `set_log_directory` first."
-        )
+    if save_to_file:
+        _check_log_directory()
 
     # Check if the logger with the specified name already exists in the logger
     # dictionary
@@ -243,11 +253,7 @@ def delete_old_logs(days: int) -> None:
         days: The number of days after which log files should be deleted.
     """
 
-    global _LOG_DIRECTORY
-    if _LOG_DIRECTORY is None:
-        raise ValueError(
-            "Log directory is not set. Call `set_log_directory` first."
-        )
+    _check_log_directory()
 
     cutoff_date = datetime.now() - timedelta(days=days)
 
@@ -261,11 +267,7 @@ def delete_old_logs(days: int) -> None:
 def clear_logs() -> None:
     """Delete all the log files."""
 
-    global _LOG_DIRECTORY
-    if _LOG_DIRECTORY is None:
-        raise ValueError(
-            "Log directory is not set. Call `set_log_directory` first."
-        )
+    _check_log_directory()
 
     for log_file in _LOG_DIRECTORY.iterdir():
         if log_file.is_file():
