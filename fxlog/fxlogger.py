@@ -176,7 +176,7 @@ def configure_logger(
     global _LOG_DIRECTORY
     if save_to_file and _LOG_DIRECTORY is None:
         raise ValueError(
-            "`_LOG_DIRECTORY` is not set. Call `set_log_directory` first."
+            "Log directory is not set. Call `set_log_directory` first."
         )
 
     # Check if the logger with the specified name already exists in the logger
@@ -246,7 +246,7 @@ def delete_old_logs(days: int) -> None:
     global _LOG_DIRECTORY
     if _LOG_DIRECTORY is None:
         raise ValueError(
-            "_LOG_DIRECTORY is not set. Call `set_log_directory` first."
+            "Log directory is not set. Call `set_log_directory` first."
         )
 
     cutoff_date = datetime.now() - timedelta(days=days)
@@ -264,7 +264,7 @@ def clear_logs() -> None:
     global _LOG_DIRECTORY
     if _LOG_DIRECTORY is None:
         raise ValueError(
-            "_LOG_DIRECTORY is not set. Call `set_log_directory` first."
+            "Log directory is not set. Call `set_log_directory` first."
         )
 
     for log_file in _LOG_DIRECTORY.iterdir():

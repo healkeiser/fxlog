@@ -125,6 +125,14 @@ logger.debug('This is a debug message')
 
 ### Misc
 
+You can set the log level of all loggers by using the `set_loggers_level` function:
+
+```python
+from fxlog import fxlogger
+
+fxlog.set_loggers_level(fxlogger.DEBUG) # You can also use `logging.DEBUG`
+```
+
 By default, the output looks like this:
 
 <p align="center">
