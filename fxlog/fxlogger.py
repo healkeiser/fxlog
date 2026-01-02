@@ -458,14 +458,13 @@ def configure_logger(
 
 
 def set_loggers_level(level: int) -> None:
-    """Sets the logging level for all loggers created with configure_logger.
-
+    """Sets the logging level for all loggers created with `configure_logger`.
     This affects both existing loggers and any loggers created after this
     call.
 
     Args:
-        level (int): The logging level to set (e.g., logging.DEBUG,
-            logging.INFO).
+        level (int): The logging level to set (e.g., fxlogger.DEBUG,
+            fxlogger.INFO).
 
     Examples:
         >>> from fxlog import fxlogger
