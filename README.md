@@ -19,9 +19,11 @@
     <!-- <img src="https://img.shields.io/badge/maintenance-deprecated-red.svg?&label=Maintenance">&nbsp;&nbsp; -->
     <!-- License -->
     <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg?&logo=open-source-initiative&logoColor=white" alt="License: MIT"/>&nbsp;&nbsp;
-    <!-- PyPI -->
+    <!-- GitHub build workflow -->
+    <img src="https://img.shields.io/github/actions/workflow/status/healkeiser/fxlog/release.yml?&label=Build&logo=github-actions&logoColor=white" alt="Build"> &nbsp;&nbsp;
+    <!-- PyPI Version-->
     <a href="https://pypi.org/project/fxlog">
-      <img src="https://img.shields.io/pypi/v/fxlog?&logo=pypi&logoColor=white&label=PyPI" alt="PyPI version"/></a>&nbsp;&nbsp;
+      <img src="https://img.shields.io/pypi/v/fxlog?&logo=pypi&logoColor=white&label=Version" alt="PyPI version"/></a>&nbsp;&nbsp;
     <!-- PyPI downloads -->
     <a href="https://pepy.tech/project/fxlog">
       <img src="https://static.pepy.tech/badge/fxlog" alt="PyPI Downloads"></a>&nbsp;&nbsp;
