@@ -91,16 +91,27 @@ jobs:
           VERSION="${TAG_NAME#v}"
 
           if [ ! -f "CHANGELOG.md" ]; then
-            echo "section=See release notes for details." >> $GITHUB_OUTPUT
+            echo "section=No changelog available for this release." >> $GITHUB_OUTPUT
             exit 0
           fi
 
           # Extract content between this version header and the next version header
+          # Handle both [version] and version formats in headers
           SECTION=$(awk "/^## \[?${VERSION}\]?/{found=1; next} /^## \[?[0-9]+\.[0-9]+\.[0-9]+\]?/{if(found) exit} found{print}" CHANGELOG.md)
 
-          # If extraction failed, use a default message
+          # Trim leading/trailing whitespace
+          SECTION=$(echo "$SECTION" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+          # If extraction failed or empty, try alternative patterns
           if [ -z "$SECTION" ]; then
-            SECTION="See [CHANGELOG.md](CHANGELOG.md) for details."
+            # Try with just the version number in various formats
+            SECTION=$(awk "/^##.*${VERSION}/{found=1; next} /^## /{if(found) exit} found{print}" CHANGELOG.md)
+            SECTION=$(echo "$SECTION" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+          fi
+
+          # If still empty, provide a meaningful fallback
+          if [ -z "$SECTION" ]; then
+            SECTION="No detailed changelog available for version ${VERSION}."
           fi
 
           # Write to output (handle multiline)
@@ -145,10 +156,10 @@ jobs:
           body: |
             ## What's Changed
 
-            ${{ needs.generate-changelog.outputs.changelog-section || 'See [CHANGELOG.md](CHANGELOG.md) for details.' }}
+            ${{ needs.generate-changelog.outputs.changelog-section || 'No detailed changelog available for this release.' }}
 
             ---
-            **Full Changelog**: See [CHANGELOG.md](CHANGELOG.md)
+            📄 **[View Full Changelog](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md)**
 
   # Step 3: Build and publish to PyPI
   publish-pypi:
