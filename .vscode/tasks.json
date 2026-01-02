@@ -1,0 +1,88 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create Initial Version",
+            "type": "shell",
+            "command": "powershell -ExecutionPolicy Bypass -File ./.scripts/git/CreateFirstVersion.ps1",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Show Current Version",
+            "type": "shell",
+            "command": "powershell -ExecutionPolicy Bypass -File ./.scripts/git/ShowCurrentVersion.ps1",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Create and Push Git Tag",
+            "type": "shell",
+            "command": "powershell -ExecutionPolicy Bypass -File ./.scripts/git/IncrementVersion.ps1 ${input:incrementType}",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Deploy Documentation",
+            "type": "shell",
+            "command": "python -m mkdocs gh-deploy",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Generate Changelog",
+            "type": "shell",
+            "command": "npm install; npm run changelog",
+            "problemMatcher": [],
+            "group": {
+                "kind": "none",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+    ],
+    "inputs": [
+        {
+            "id": "incrementType",
+            "type": "pickString",
+            "description": "Select the version increment type",
+            "options": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "default": "patch"
+        }
+    ]
+}
