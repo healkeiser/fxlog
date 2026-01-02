@@ -47,6 +47,7 @@ NOTSET = logging.NOTSET
 _LOG_DIRECTORY = None
 _CONFIGURED_LOGGERS = set()
 _SHARED_FILE_HANDLER = None
+_DEFAULT_LEVEL = None  # Global default level for new loggers
 
 
 def set_log_directory(log_directory: Union[str, Path]) -> None:
@@ -447,11 +448,20 @@ def configure_logger(
     global _CONFIGURED_LOGGERS
     _CONFIGURED_LOGGERS.add(logger_name)
 
+    # Apply global default level if set
+    if _DEFAULT_LEVEL is not None:
+        logger.setLevel(_DEFAULT_LEVEL)
+        for handler in logger.handlers:
+            handler.setLevel(_DEFAULT_LEVEL)
+
     return logger
 
 
 def set_loggers_level(level: int) -> None:
     """Sets the logging level for all loggers created with configure_logger.
+
+    This affects both existing loggers and any loggers created after this
+    call.
 
     Args:
         level (int): The logging level to set (e.g., logging.DEBUG,
@@ -461,6 +471,10 @@ def set_loggers_level(level: int) -> None:
         >>> from fxlog import fxlogger
         >>> fxlogger.set_loggers_level(fxlogger.DEBUG)
     """
+    # Store as global default for future loggers
+    global _DEFAULT_LEVEL
+    _DEFAULT_LEVEL = level
+
     # First, update all explicitly tracked loggers
     for logger_name in _CONFIGURED_LOGGERS:
         logger_instance = logging.getLogger(logger_name)
